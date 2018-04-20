@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+	<head>
+		<meta charset="utf-8">
+		<title>Lamigo 歷年球衣總整理</title>
+		<script>
+			var db = [
+				{
+					'year': 2011,
+					'name': '主場白',
+					'img': 'http://i.imgur.com/S81I4Oc.jpg',
+					'ingame': true,
+					'forfan': true, 
+					'series': '主場白',
+					'desc': '初代主場白。',
+					'src': 'https://www.ptt.cc/bbs/Monkeys/M.1415196342.A.BC8.html'
+				},
+				{
+					'year': 2011,
+					'name': '客場藍',
+					'img': 'http://i.imgur.com/Z2ztqGT.jpg',
+					'ingame': true,
+					'forfan': true,
+					'series': '客場藍',
+					'desc': '初代客場藍。',
+					'src': 'https://www.ptt.cc/bbs/Monkeys/M.1415196342.A.BC8.html'
+				},
+				{
+					'year': 2012,
+					'name': '假日紅 (2012)',
+					'img': 'http://i.imgur.com/bCZxKcM.jpg',
+					'ingame': true,
+					'forfan': true,
+					'series': '假日球衣',
+					'desc': '當初穿這套球衣出賽的戰績不佳，被球迷戲稱「血洗紅」。',
+					'src': 'https://www.ptt.cc/bbs/Monkeys/M.1415196342.A.BC8.html'
+				},
+				{
+					'year': 2013,
+					'name': '假日紅 (2013)',
+					'img': 'http://i.imgur.com/a5Rl6We.jpg',
+					'ingame': true,
+					'forfan': true,
+					'series': '假日球衣',
+					'desc': '個人認為最美的一套假日紅。',
+					'src': 'https://www.ptt.cc/bbs/Monkeys/M.1415196342.A.BC8.html'
+				},
+				{
+					'year': 2013,
+					'name': '亮桃紅',
+					'img': 'http://www.lamigo-monkeys.com.tw/images/400222280picture1.jpg',
+					'ingame': false,
+					'forfan': true,
+					'desc': '4/4 王心凌開球時首次亮相；後來端午節時限量開賣 50 件。',
+					'src': 'http://www.lamigo-monkeys.com.tw/e_news.php?id=1001'
+				},
+				{
+					'year': 2013,
+					'name': '動紫球衣 (2013)',
+					'img': 'https://i.imgur.com/isdc9xY.jpg',
+					'ingame': false,
+					'forfan': true,
+					'series': '動紫球衣',
+					'desc': '初版動紫球衣。素雅的淡紫色至今仍是許多球迷心中的 No.1！<br />（感謝 PTT ixnine920 提供照片）',
+					'src': 'none'
+				},
+				{
+					'year': 2013,
+					'name': '迷彩球衣 (2013)',
+					'img': 'http://i.imgur.com/oGUKJLX.jpg',
+					'ingame': true,
+					'forfan': true,
+					'series': '阿迷/迷彩',
+					'desc': '初代迷彩球衣：闊葉迷彩。',
+					'src': 'https://www.ptt.cc/bbs/Monkeys/M.1415196342.A.BC8.html'
+				},
+				{
+					'year': 2014,
+					'name': '綽號球衣 (2014)',
+					'img': 'http://i.imgur.com/rHOTEWC.jpg',
+					'ingame': true,
+					'forfan': false,
+					'series': '綽號球衣',
+					'desc': '初代綽號球衣，也是第一套採用熱昇華技術印製的球衣。可以看到有漸層的效果。',
+					'src': 'https://www.ptt.cc/bbs/Monkeys/M.1415196342.A.BC8.html'
+				},
+				{
+					'year': 2014,
+					'name': '黑潮球衣 (2014)',
+					'img': 'http://i.imgur.com/2iYgyPo.jpg',
+					'ingame': true,
+					'forfan': true,
+					'series': '開季球衣',
+					'desc': '為 2014 年的開季球衣。當年的壯猿卡特典即為此球衣（球迷版）。<br />於 2018 年「我的寶島時代」趴重出江湖。',
+					'src': 'https://www.ptt.cc/bbs/Monkeys/M.1415196342.A.BC8.html'
+				},
+				{
+					'year': 2014,
+					'name': '猛猿球衣',
+					'img': 'http://i.imgur.com/OxF1MKu.jpg',
+					'ingame': true,
+					'forfan': true,
+					'series': '假日球衣',
+					'desc': '此套為 2014 年的假日球衣。但當年開始有假日辦趴專屬球衣，因此出場機會不多。',
+					'src': 'https://www.ptt.cc/bbs/Monkeys/M.1415196342.A.BC8.html'
+				},
+				{
+					'year': 2014,
+					'name': '鋼鐵球衣',
+					'img': 'http://cdn2.ettoday.net/images/586/d586867.jpg',
+					'ingame': true,
+					'forfan': true,
+					'series': '伊萊克斯',
+					'desc': '伊萊克斯贊助的「鋼鐵趴」主題球衣，設計靈感為該公司的吸塵器。熱昇華印製。',
+					'src': 'http://sports.ettoday.net/news/348823'
+				},
+				{
+					'year': 2014,
+					'name': '動紫宇宙',
+					'img': 'http://i.imgur.com/UzJgGvv.jpg',
+					'ingame': true,
+					'forfan': true,
+					'series': '動紫球衣',
+					'desc': '第二代動紫球衣。熱昇華印製。個人覺得有點太花。',
+					'src': 'https://www.ptt.cc/bbs/Monkeys/M.1415196342.A.BC8.html'
+				},
+				{
+					'year': 2014,
+					'name': 'Lamigo 與 Surface 聯名球衣',
+					'img': 'http://cdn2.ettoday.net/images/631/d631913.jpg',
+					'ingame': true,
+					'forfan': true,
+					'desc': '俗稱「微軟球衣」。設計不落俗套，蠻多人喜歡的。熱昇華印製。',
+					'src': 'http://sports.ettoday.net/news/365867'
+				},
+				{
+					'year': 2014,
+					'name': '豹皇球衣',
+					'img': 'http://s6.gigacircle.com/media/s6_53b4c3e0aadee.jpg',
+					'ingame': true,
+					'forfan': true,
+					'series': '豹紋球衣',
+					'desc': '初代豹紋衣。熱昇華印製。這套當年帶來很多話題....',
+					'src': 'none'
+				},
+				{
+					'year': 2014,
+					'name': '干神球衣',
+					'img': 'https://c1.staticflickr.com/6/5574/14958734885_a02029fe84_b.jpg',
+					'ingame': true,
+					'forfan': true,
+					'series': '桃園主題',
+					'desc': '配合「老干趴」製作。顏色不太討喜，讓人想到中國代表隊。',
+					'src': 'none'
+				},
+				{
+					'year': 2014,
+					'name': '迷彩球衣 (2014)',
+					'img': 'https://c1.staticflickr.com/4/3955/15297395687_a6d22459d3_b.jpg',
+					'ingame': true,
+					'forfan': true,
+					'series': '阿迷/迷彩',
+					'desc': '第二代迷彩球衣，獵鴨迷彩。個人非常喜歡。',
+					'src': 'none'
+				},
+				{
+					'year': 2014,
+					'name': '金猿球衣 (2014)',
+					'img': 'http://twimg.edgesuite.net/images/ReNews/20140303/420_12ff2ec60ffb81b72e2123c23da0c982.jpg',
+					'ingame': false,
+					'forfan': true,
+					'series': '金猿球衣',
+					'desc': '俗稱「土豪金」，2014 年金猿卡專屬贈品，沒有其他的入手方式，尊爵不凡。在球場上看到有人穿此球衣時，請投以尊敬的眼神。',
+					'src': 'http://www.appledaily.com.tw/realtimenews/article/new/20140303/354073/'
+				},
+				{
+					'year': 2015,
+					'name': '假日紅/JUMP RED',
+					'img': 'https://i.imgur.com/tsukbsg.jpg',
+					'ingame': true,
+					'forfan': true,
+					'series': '假日球衣',
+					'desc': '2015 年的假日球衣重回紅色調。這套也蠻多人喜歡的。',
+					'src': 'none'
+				},
+				{
+					'year': 2015,
+					'name': '綽號球衣 (2015)',
+					'img': 'http://img.ltn.com.tw/Upload/sports/page/800/2015/02/07/1227250_2.jpg',
+					'ingame': true,
+					'forfan': false,
+					'series': '綽號球衣',
+					'desc': '第二代綽號球衣，熱昇華製作。個人覺得沒 2014 年的好看。',
+					'src': 'http://sports.ltn.com.tw/news/breakingnews/1227250'
+				},
+				{
+					'year': 2015,
+					'name': '勁肌球衣',
+					'img': 'https://i.imgur.com/5EEEFxm.jpg',
+					'ingame': true,
+					'forfan': true,
+					'desc': '配合「勁肌趴」所出的球衣。熱昇華。不予置評。',
+					'src': 'none'
+				},
+				{
+					'year': 2015,
+					'name': '藍零球衣',
+					'img': 'http://cdn2.ettoday.net/images/1037/d1037255.jpg',
+					'ingame': true,
+					'forfan': true,
+					'series': '伊萊克斯',
+					'desc': '配合伊萊克斯主題趴所設計的球衣。熱昇華。還不錯看。',
+					'src': 'http://sports.ettoday.net/news/495252'
+				},
+				{
+					'year': 2015,
+					'name': 'La New 復古球衣',
+					'img': 'http://img.ltn.com.tw/Upload/sports/page/800/2015/05/12/php86sgKi.jpg',
+					'ingame': true,
+					'forfan': true,
+					'desc': '配合母企業贊助的「辣妞趴」所設計的復古球衣。球迷版好像是熱昇華的，有點可惜。還是原本的湖水綠條紋經典。',
+					'src': 'none'
+				},
+				{
+					'year': 2015,
+					'name': '復刻版 La New 主場白',
+					'img': 'none',
+					'ingame': false,
+					'forfan': true,
+					'desc': '「辣妞趴」三套復古球迷版球衣之一。沒有實戰版。',
+					'src': 'none'
+				},
+				{
+					'year': 2015,
+					'name': '復刻版 La New 湖水綠',
+					'img': 'none',
+					'ingame': false,
+					'forfan': true,
+					'desc': '同上。',
+					'src': 'none'
+				},
+				{
+					'year': 2015,
+					'name': '動紫宇宙 3.0',
+					'img': 'http://img.chinatimes.com/newsphoto/2015-06-21/656/20150621003020.jpg',
+					'ingame': true,
+					'forfan': true,
+					'series': '動紫球衣',
+					'desc': '動紫球衣第三版。個人覺得是所有動紫球衣中最好看的一套！',
+					'src': 'http://www.chinatimes.com/realtimenews/20150621003017-260404'
+				},
+				{
+					'year': 2015,
+					'name': '篤贏球衣',
+					'img': 'http://img.chinatimes.com/newsphoto/2015-06-10/656/20150610004421.jpg',
+					'ingame': true,
+					'forfan': true,
+					'series': '桃園主題',
+					'desc': '以原住民為主題設計的球衣。不對稱的設計與原住民圖騰的元素頗獲好評。',
+					'src': 'http://www.chinatimes.com/realtimenews/20150610004420-260403'
+				},
+				{
+					'year': 2015,
+					'name': '豹皇二世',
+					'img': 'http://www.lamigo-monkeys.com.tw//images/r1k4a3h5j41791y6u0p7.jpg',
+					'ingame': true,
+					'forfan': true,
+					'series': '豹紋球衣',
+					'desc': '豹紋球衣第二版。色調改為深藍，個人覺得比第一版好多了。',
+					'src': 'http://www.lamigo-monkeys.com.tw/e_news.php?id=1606'
+				},
+				{
+					'year': 2015,
+					'name': '迷彩球衣 (2015)',
+					'img': 'http://www.lamigo-monkeys.com.tw//images/f1r42421705050m3m3y0.jpg',
+					'ingame': true,
+					'forfan': true,
+					'series': '阿迷/迷彩',
+					'desc': '這一年的迷彩球衣風格為「虎紋迷彩」，也是採不對稱設計，感覺也不錯。',
+					'src': 'http://www.lamigo-monkeys.com.tw/e_news.php?id=1686'
+				},
+				{
+					'year': 2015,
+					'name': '大勝黑潮',
+					'img': 'http://i.imgur.com/L3cic9j.jpg',
+					'ingame': false,
+					'forfan': true,
+					'desc': '2015 台灣大賽桃猿主場球迷應援區贈送的應援用球衣。因為是贈品，品質不算太好；但主打「台灣在地成衣廠製造」，算是有達到加分效果。',
+					'src': 'https://www.ptt.cc/bbs/Monkeys/M.1444032889.A.B5E.html'
+				},
+				{
+					'year': 2015,
+					'name': '大勝紅不讓',
+					'img': 'http://i.imgur.com/JJ7EJbq.jpg',
+					'ingame': false,
+					'forfan': true,
+					'desc': '同上。',
+					'src': 'https://www.ptt.cc/bbs/Monkeys/M.1444032889.A.B5E.html'
+				},
+				{
+					'year': 2015,
+					'name': '大勝榮耀白',
+					'img': 'http://i.imgur.com/wIJYYzU.jpg',
+					'ingame': false,
+					'forfan': true,
+					'desc': '2015 台灣大賽客場專用應援球衣。版型設計跟前兩件一樣。不同的是：這件是用賣的。是用來考驗信仰的！',
+					'src': 'https://www.ptt.cc/bbs/Monkeys/M.1445797174.A.0B3.html'
+				},
+				{
+					'year': 2015,
+					'name': '金猿球衣 (2015)',
+					'img': 'http://i.imgur.com/Ln3FCQk.jpg',
+					'ingame': false,
+					'forfan': true,
+					'series': '金猿球衣',
+					'desc': '2015 的金猿球衣回歸白色系，意外地非常素。<br />（感謝 PTT MrChief 提供照片）',
+					'src': 'https://www.ptt.cc/bbs/Monkeys/M.1493093325.A.6EC.html'
+				},
+				{
+					'year': 2016,
+					'name': '綽號球衣 (2016)',
+					'img': 'http://twimg.edgesuite.net/images/ReNews/20160130/420_3669eef72abf5c449b9f91fcfe2ff4a7.jpg',
+					'ingame': true,
+					'forfan': true,
+					'series': '綽號球衣',
+					'desc': '一樣有漸層效果，不過感覺這一年的設計比較保守。',
+					'src': 'http://www.appledaily.com.tw/realtimenews/article/new/20160130/786931/'
+				},
+				{
+					'year': 2016,
+					'name': '石垣最強 10 號應援球衣',
+					'img': 'http://img.ltn.com.tw/Upload/sports/page/800/2015/09/21/phpnbeIfE.jpg',
+					'ingame': false,
+					'forfan': true,
+					'desc': '2016 年初在石垣島和羅德春訓賽時，送給參加旅行團去加油的球迷。基本上是由大勝紅不讓改過來的。（感謝 PTT Spiezio 提供資訊）',
+					'src': 'http://sports.ltn.com.tw/news/breakingnews/1451546'
+				},
+				{
+					'year': 2016,
+					'name': '假日球衣 VICTORY',
+					'img': 'http://imgur.com/Hlnnquz.jpg',
+					'ingame': true,
+					'forfan': true,
+					'series': '假日球衣',
+					'desc': '這套好看。真的好看。球迷版分為有背號及無背號兩種，季末配合金鋒引退，52 背號的版本有追加生產。',
+					'src': 'none'
+				},
+				{
+					'year': 2016,
+					'name': 'Fun Time',
+					'img': 'http://imgur.com/C37ZvMx.jpg',
+					'ingame': true,
+					'forfan': true,
+					'desc': '少數粉色系實戰球衣。靈感是糖果甜點。女孩穿還蠻好看的；球員穿就見人見智。',
+					'src': 'none'
+				},
+				{
+					'year': 2016,
+					'name': 'Elmo 聯名球衣',
+					'img': 'http://i.imgur.com/HgQMYwv.jpg',
+					'ingame': false,
+					'forfan': true,
+					'series': '卡通系列',
+					'desc': '這件也是翻糖趴的系列商品之一，不過只有球迷版球衣，沒有實戰。Elmo 的粉絲好像不少，所以這套還蠻受歡迎的。',
+					'src': 'http://goods.ruten.com.tw/item/show?21620737738028'
+				},
+				{
+					'year': 2016,
+					'name': 'POLI 聯名球衣',
+					'img': 'http://i.imgur.com/uToDbVq.jpg',
+					'ingame': false,
+					'forfan': true,
+					'series': '卡通系列',
+					'desc': '翻糖趴的另一件系列商品，也是只有球迷版球衣，沒有實戰。<br />（感謝 PTT aaawu 提供照片）',
+					'src': 'http://i.imgur.com/uToDbVq.jpg'
+				},
+				{
+					'year': 2016,
+					'name': '玫瑰金猿',
+					'img': 'http://cdn2.ettoday.net/images/1719/d1719684.jpg',
+					'ingame': true,
+					'forfan': true,
+					'series': '伊萊克斯',
+					'desc': '伊萊克斯贊助的「金猿趴」專屬球衣。個人覺得普普。',
+					'src': 'http://sports.ettoday.net/news/678532'
+				},
+				{
+					'year': 2016,
+					'name': 'BEARS 復古球衣',
+					'img': 'http://i.imgur.com/yZtL9gK.jpg',
+					'ingame': true,
+					'forfan': true,
+					'desc': 'La New 贊助的「我的寶島時代趴」球衣。名為「復古」，卻不是復「La New 熊」的古，不知復到哪去。因此被酸「合庫球衣」也只是剛好。',
+					'src': 'http://www.appledaily.com.tw/realtimenews/article/new/20160507/855645/'
+				},
+				{
+					'year': 2016,
+					'name': 'TAOYUAN 球衣',
+					'img': 'http://i.epochtimes.com/assets/uploads/2016/06/1606110807172357-600x400.jpg',
+					'ingame': true,
+					'forfan': true,
+					'series': '桃園主題',
+					'desc': '繼「老干趴」與「篤贏趴」後，再一次和桃園市政府合作行銷；不過這是第一次以「桃園」為名設計球衣。袖子上的花布設計相當大膽，不過喜惡兩極。',
+					'src': 'http://www.epochtimes.com/b5/16/6/11/n7987597.htm'
+				},
+				{
+					'year': 2016,
+					'name': '嬉力浪花',
+					'img': 'http://img.ltn.com.tw/Upload/sports/page/800/2016/07/03/phpmSgtiI.jpg',
+					'ingame': true,
+					'forfan': true,
+					'desc': '雖然嬉力趴已經辦了好幾年，但 2016 年是第一次有專屬球衣。',
+					'src': 'http://sports.ltn.com.tw/news/breakingnews/1750303'
+				},
+				{
+					'year': 2016,
+					'name': '動紫球衣 (2016)',
+					'img': 'https://i.imgur.com/quXDFE8.jpg',
+					'ingame': true,
+					'forfan': true,
+					'series': '動紫球衣',
+					'desc': '2016 年的動紫球衣和嬉力浪花一樣採潑墨風格，個人沒有很愛。',
+					'src': 'none'
+				},
+				{
+					'year': 2016,
+					'name': '「CLEAR 淨」聯名球衣',
+					'img': 'http://imgur.com/BTf2mqR.jpg',
+					'ingame': false,
+					'forfan': true,
+					'desc': '「CLEAR 淨」的贊助活動贈送的球衣。基本上是從「大勝黑潮」改來的。',
+					'src': 'https://tw.bid.yahoo.com/item/%E5%96%9C%E6%A8%82%E5%B1%8B-%E6%A3%92%E7%90%83-Lamigo%E6%A1%83%E7%8C%BF%E9%9A%8A%E9%99%B3%E9%87%91%E9%8B%92%E4%BB%A3%E8%A8%80%E7%B4%80%E5%BF%B5%E7%90%83%E8%A1%A3-100341660744'
+				},
+				{
+					'year': 2016,
+					'name': 'ARMY-4.0',
+					'img': 'http://cdn2.ettoday.net/images/1994/d1994106.jpg',
+					'ingame': true,
+					'forfan': true,
+					'series': '阿迷/迷彩',
+					'desc': '2016 年的迷彩球衣特色是袖口有鯊魚嘴。但迷彩本身不如前兩年有特色。',
+					'src': 'http://sports.ettoday.net/news/763564'
+				},
+				{
+					'year': 2016,
+					'name': '金猿球衣 (2016)',
+					'img': 'http://i.imgur.com/OgqqRtC.jpg',
+					'ingame': false,
+					'forfan': true,
+					'series': '金猿球衣',
+					'desc': '這一年的金猿球衣跟假日紅設計相似，只不過改成以灰白為底。<br />（感謝 PTT MrChief 提供照片）',
+					'src': 'https://www.ptt.cc/bbs/Monkeys/M.1493093325.A.6EC.html'
+				},
+				{
+					'year': 2017,
+					'name': '綽號球衣 (2017)',
+					'img': 'http://img.ltn.com.tw/Upload/sports/page/800/2017/02/11/php9bX39h.jpg',
+					'ingame': true,
+					'forfan': true,
+					'series': '綽號球衣',
+					'desc': '第四代的綽號球衣，也是讓日本人認識大王威名的球衣。配色轉為保守，改為灰黑系，但整體來說還不錯。',
+					'src': 'http://sports.ltn.com.tw/news/breakingnews/1971989'
+				},
+				{
+					'year': 2017,
+					'name': '主場白 (2017)',
+					'img': 'http://img5.cna.com.tw/www/WebPhotos/800/20170402/34238886.jpg',
+					'ingame': true,
+					'forfan': true,
+					'series': '主場白',
+					'desc': '自更名為 Lamigo Monkeys 以來首次大改版。從紅藍配色改為金藍配色，頗受好評。',
+					'src': 'http://www.cna.com.tw/news/aspt/201704025020-1.aspx'
+				},
+				{
+					'year': 2017,
+					'name': '客場藍 (2017)',
+					'img': 'http://www.lamigo-monkeys.com.tw/images/y1w4e9f2j1j800d2p076.jpg',
+					'ingame': true,
+					'forfan': true,
+					'series': '客場藍',
+					'desc': '客場藍配色也隨主場白變更。其實設計不算差，但蠻多人不喜歡黃色的袖子。',
+					'src': 'http://www.lamigo-monkeys.com.tw/c0_1.php?pid=273&bid=97&cid=485'
+				},
+				{
+					'year': 2017,
+					'name': '超捷球衣',
+					'img': 'http://www.tymetro.com.tw/js/upload/ckfinder/images/S__950447.jpg',
+					'ingame': true,
+					'forfan': true,
+					'series': '桃園主題',
+					'desc': '「桃捷趴」專屬球衣，也是第二款「TAOYUAN」聯名球衣。',
+					'src': 'https://www.tymetro.com.tw/cht/index.php?code=list&flag=detail&ids=20&article_id=1205'
+				},
+				{
+					'year': 2017,
+					'name': 'LAMIGO X THOMAS 球衣',
+					'img': 'http://i.imgur.com/aZZRf0e.jpg',
+					'ingame': false,
+					'forfan': true,
+					'series': '卡通系列',
+					'desc': '和湯瑪士小火車合作的聯名球衣。<br />（感謝 PTT aaawu 提供照片）',
+					'src': 'http://i.imgur.com/aZZRf0e.jpg'
+				},
+				{
+					'year': 2017,
+					'name': '捷淨球衣',
+					'img': 'http://imgur.com/5aEab7i.jpg',
+					'ingame': true,
+					'forfan': false,
+					'series': '伊萊克斯',
+					'desc': '伊萊克斯贊助的第四套球衣。中規中矩，還算 ok。',
+					'src': 'https://www.facebook.com/LamigoMonkeys/photos/pcb.1339557662748880/1339555776082402/?type=3'
+				},
+				{
+					'year': 2017,
+					'name': '金猿球衣 (2017)',
+					'img': 'http://i.imgur.com/Uc2FTxZ.jpg',
+					'ingame': false,
+					'forfan': true,
+					'series': '金猿球衣',
+					'desc': '改為黑底金條紋，重新找回尊爵感。（感謝 PTT MrChief 提供照片）',
+					'src': 'https://www.ptt.cc/bbs/Monkeys/M.1493093325.A.6EC.html'
+				},
+				{
+					'year': 2017,
+					'name': '動紫大勝 (2017)',
+					'img': 'https://i.imgur.com/8db2aVx.jpg',
+					'ingame': true,
+					'forfan': true,
+					'series': '動紫球衣',
+					'desc': '2017 年的動紫大勝球衣。細部以多邊（三角）型構成，還不錯。',
+					'src': 'none'
+				},
+				{
+					'year': 2017,
+					'name': '佩佩豬聯名球衣',
+					'img': 'http://i.imgur.com/gPrNiQi.jpg',
+					'ingame': false,
+					'forfan': true,
+					'series': '卡通系列',
+					'desc': '和卡通佩佩豬合作的聯名球衣。',
+					'src': 'https://www.facebook.com/LamigoMonkeys/posts/1457252087646103'
+				},
+				{
+					'year': 2017,
+					'name': '佩佩豬聯名「捏泥巴」球衣',
+					'img': 'https://i.imgur.com/79rhlWc.jpg',
+					'ingame': false,
+					'forfan': true,
+					'series': '卡通系列',
+					'desc': '和卡通佩佩豬合作的聯名球衣。<br />（感謝 PTT gcc 提供照片）',
+					'src': 'none'
+				},
+				{
+					'year': 2017,
+					'name': '阿迷趴主題球衣：無雙',
+					'img': 'https://i.imgur.com/KoCt0ye.jpg',
+					'ingame': true,
+					'forfan': false,
+					'series': '阿迷/迷彩',
+					'desc': '這一年的阿迷趴和日本光榮特庫摩合作，以「真．三國無雙」中的武將造型為主軸，主打古典戰爭風。',
+					'src': 'none'
+				},
+				{
+					'year': 2017,
+					'name': '彩虹小馬 Friendship',
+					'img': 'none',
+					'ingame': false,
+					'forfan': true,
+					'series': '卡通系列',
+					'desc': '於辣蜜趴期間推出的球衣。和彩虹小馬電影合作宣傳。',
+					'src': 'none'
+				},
+				{
+					'year': 2017,
+					'name': '彩虹小馬 Lamigirls',
+					'img': 'none',
+					'ingame': false,
+					'forfan': true,
+					'series': '卡通系列',
+					'desc': '於辣蜜趴期間推出的球衣。和彩虹小馬電影合作宣傳。',
+					'src': 'none'
+				},
+				{
+					'year': 2018,
+					'name': '綽號球衣 (2018)：獸王',
+					'img': 'https://i.imgur.com/rqbOd3H.jpg',
+					'ingame': true,
+					'forfan': true,
+					'series': '綽號球衣',
+					'desc': '2018 年的球衣走賽車服路線，特點是腹部斗大的「背」號.... 日本有記者稱之為「腹番號」 XDDD<br />（感謝 PTT stem 提供照片）',
+					'src': 'none'
+				},
+				{
+					'year': 2018,
+					'name': '客場藍 (2018)',
+					'img': 'none',
+					'ingame': true,
+					'forfan': false,
+					'series': '客場藍',
+					'desc': '2017 客場藍的小改版。袖子部份變成金色，同時改以熱昇華方式印製。<br />但並未推出對應的球迷版球衣，同時間球迷版球衣仍維持 2017 年的配色。',
+					'src': 'none'
+				},
+				{
+					'year': 2018,
+					'name': '假日球衣 Golden Spirit',
+					'img': 'https://i.imgur.com/2nuKhrJ.jpg',
+					'ingame': true,
+					'forfan': true,
+					'series': '假日球衣',
+					'desc': '2018 的假日球衣，配合去年拿下「金冠軍」，改為黑底金邊的配色。不少球迷覺得跟日本的「侍日本」球衣風格有點像。',
+					'src': 'none'
+				},
+				{
+					'year': 2018,
+					'name': '棒球的藍天',
+					'img': 'none',
+					'ingame': true,
+					'forfan': false,
+					'desc': '配合 We Are Playing 主題趴設計的球衣。這件球衣與伊甸基金會合作，實戰球衣於活動結束後全數捐出義賣。',
+					'src': 'none'
+				},
+				{
+					'year': 2018,
+					'name': 'Super Wings 聯名杰特球衣',
+					'img': 'https://i.imgur.com/UvHLIbR.jpg',
+					'ingame': false,
+					'forfan': true,
+					'series': '卡通系列',
+					'desc': '配合 We Are Playing 主題趴設計的兒童／球迷球衣。<br />（感謝小朋友的父親同意公開照片）',
+					'src': 'none'
+				},
+				{
+					'year': 2018,
+					'name': '王者',
+					'img': 'none',
+					'ingame': true,
+					'forfan': false,
+					'series': '伊萊克斯',
+					'desc': '由伊萊克斯贊助的「勁黑趴」的主題球衣。',
+					'src': 'none'
+				},
+			];
+		</script>
+	</head>
+	
+	<body>
+		<style>
+			img {
+				max-width: 250px;
+				height: auto;
+				text-align: center;
+				margin: 5px;
+			}
+			table {
+				border-collapse: collapse;
+			}
+			table, th, td {
+				border: 1px solid black;
+			}
+			.centerText {
+				text-align: center;
+			}
+			h1, h3 {
+				text-align: center;
+			}
+            .column {
+                float: left;
+                width: 48%;
+            }
+		</style>
+		
+		<h1>Lamigo 歷年球衣總整理</h1>
+		<h3>（至 2018/04/08 為止）</h3>
+        
+        <div class="row">
+            <div class="column">
+                <table id="statTable" width="400px">
+                    <colgroup>
+                        <col width="10%">
+                        <col width="30%">
+                        <col width="30%">
+                        <col width="30%">
+                    </colgroup>
+                    <thead>
+                    <tr class="header">
+                        <th></th>
+                        <th>實戰數量</th>
+                        <th>球迷版</th>
+                        <th>總計</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="column">
+                <table>
+                    <tr>
+                        <th>年份</th>
+                        <th>系列</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <form id=filter_year></form>
+                        </td>
+                        <td>
+                            <form id=filter_series></form>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <form id=go>
+                                <input type="button" value="套用" onclick="apply_filter();" />
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <p>&nbsp;</p>
+        		
+		<table id="mainTable" style="width: 100%;">
+			<colgroup>
+			<col width="7%" />
+			<col width="10%" />
+			<col width="17%" />
+			<col width="4%" />
+			<col width="4%" />
+			<col width="8%" />
+			<col width="49%" />
+			</colgroup>
+			<thead>
+			<tr class="header">
+			<th>編號</th>
+			<th>名稱</th>
+			<th>圖片</th>
+			<th>實戰？</th>
+			<th>球迷？</th>
+			<th>系列</th>
+			<th>備註</th>
+			</tr>
+			</thead>
+		</table>
+		
+		<h3>To be continued....</h3>
+        
+        <script>
+            var apply_filter = function() {
+                var tbl = document.getElementById('mainTable');
+                // 避開 <th>，從 1 開始。
+                for (var i = 1; i < tbl.rows.length; i++) {
+                    var year = tbl.rows[i].cells[0].innerText.substr(0,4);
+                    var series = tbl.rows[i].cells[5].innerText;
+                    if (series === '') {
+                        series = '其他';
+                    }
+
+                    var check_year = document.getElementById(year);
+                    var check_series = document.getElementById(series);
+
+                    if (check_year.checked && check_series.checked) {
+                        tbl.rows[i].style.display = '';
+                    } else {
+                        tbl.rows[i].style.display = 'none';
+                    }
+                }
+            };
+        </script>
+        
+        <script>
+			var tbl = document.getElementById('mainTable');
+			var last_year = 0;
+			var year_serial = 1;
+			var in_game_count = [];
+			var for_fan_count = [];
+			var all_count = [];
+            var series_items = [];
+			for (var i = 0; i < db.length; i++) {
+				var row = tbl.insertRow(-1);
+				var cell1 = row.insertCell(0);
+				var cell2 = row.insertCell(1);
+				var cell3 = row.insertCell(2);
+				var cell4 = row.insertCell(3);
+				var cell5 = row.insertCell(4);
+				var cell6 = row.insertCell(5);
+				var cell7 = row.insertCell(6);
+				
+                if (db[i].hasOwnProperty('series')) {
+                    series_items[db[i].series] = 0;
+                }
+
+				if (db[i].year != last_year) {
+					last_year = db[i].year;
+					year_serial = 1;
+					in_game_count[db[i].year] = 0;
+					for_fan_count[db[i].year] = 0;
+					all_count[db[i].year] = 1;
+				} else {
+					++year_serial;
+					++all_count[db[i].year];
+				}
+				cell1.innerHTML = db[i].year + '-' + year_serial;
+				cell2.innerHTML = db[i].name;
+				cell3.innerHTML = (db[i].img === 'none') ?
+					'(n/a)' :
+					'<a href="' + db[i].img + '"><img src="' + db[i].img + '" alt="image"></a>';
+				cell4.innerHTML = db[i].ingame ? 'Yes' : 'No';
+				in_game_count[db[i].year] += db[i].ingame ? 1 : 0;
+				cell5.innerHTML = db[i].forfan ? 'Yes' : 'No';
+				for_fan_count[db[i].year] += db[i].forfan ? 1 : 0;
+				cell6.innerHTML = (db[i].hasOwnProperty('series')) ? db[i].series : "";
+				cell7.innerHTML = db[i].desc +
+					(db[i].src === 'none' ? "" : '（<a href="' + db[i].src + '">圖片來源</a>）');
+				
+				cell1.className =
+				cell4.className =
+				cell5.className =
+				cell6.className = 'centerText';
+			}
+
+            series_items['其他'] = 0;
+		</script>
+
+		<p>&nbsp;</p>
+		
+		<script>
+			tbl = document.getElementById('statTable');
+			var in_game_total = 0;
+			var for_fan_total = 0;
+			var all_total = 0;
+			var composeRow = function (items) {
+				var row = tbl.insertRow(-1);
+				for (var i in items) {
+					var cell = row.insertCell(-1);
+					cell.innerHTML = items[i];
+					cell.className = 'centerText';
+				}
+			};
+			
+			for (var i in in_game_count) {
+				composeRow( [i, in_game_count[i], for_fan_count[i], all_count[i]]);
+				in_game_total += in_game_count[i];
+				for_fan_total += for_fan_count[i];
+				all_total += all_count[i];				
+			}
+			composeRow(['總計', in_game_total, for_fan_total, all_total]);
+
+            var filter_year = document.getElementById('filter_year');
+            for (var year in in_game_count) {
+                var checkbox = document.createElement("INPUT");
+                checkbox.setAttribute("type", "checkbox");
+                checkbox.id = year.toString();
+                checkbox.checked = true;
+                filter_year.appendChild(checkbox);
+                filter_year.appendChild(document.createTextNode(year.toString()));
+                filter_year.appendChild(document.createElement('br'));
+            }
+
+            var filter_series = document.getElementById('filter_series');
+            for (var series in series_items) {
+                var checkbox = document.createElement("INPUT");
+                checkbox.setAttribute('type', 'checkbox');
+                checkbox.id = series;
+                checkbox.checked = true;
+                filter_series.appendChild(checkbox);
+                filter_series.appendChild(document.createTextNode(series));
+                filter_series.appendChild(document.createElement('br'));
+            }
+		</script>
+	</body>
+</html>
