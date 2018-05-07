@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 	<head>
-		<meta charset="utf-8">
 		<title>Lamigo 歷年球衣總整理</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>		
 		<script>
 			var db = [
 				{
@@ -671,9 +675,6 @@
 				},
 			];
 		</script>
-	</head>
-	
-	<body>
 		<style>
 			img {
 				max-width: 250px;
@@ -684,8 +685,12 @@
 			table {
 				border-collapse: collapse;
 			}
-			table, th, td {
+			/*table, th, td {
 				border: 1px solid black;
+			}
+			*/
+			th {
+				text-align: center;
 			}
 			.centerText {
 				text-align: center;
@@ -698,79 +703,80 @@
                 width: 48%;
             }
 		</style>
-		
-		<h1>Lamigo 歷年球衣總整理</h1>
-		<h3>（至 2018/04/08 為止）</h3>
-        
-        <div class="row">
-            <div class="column">
-                <table id="statTable" width="400px">
-                    <colgroup>
-                        <col width="10%">
-                        <col width="30%">
-                        <col width="30%">
-                        <col width="30%">
-                    </colgroup>
-                    <thead>
-                    <tr class="header">
-                        <th></th>
-                        <th>實戰數量</th>
-                        <th>球迷版</th>
-                        <th>總計</th>
-                    </tr>
-                    </thead>
-                </table>
-            </div>
-            <div class="column">
-                <table>
-                    <tr>
-                        <th>年份</th>
-                        <th>系列</th>
-                    </tr>
-                    <tr>
-                        <td>
-                            <form id=filter_year></form>
-                        </td>
-                        <td>
-                            <form id=filter_series></form>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <form id=go>
-                                <input type="button" value="套用" onclick="apply_filter();" />
-                            </form>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <p>&nbsp;</p>
-        		
-		<table id="mainTable" style="width: 100%;">
-			<colgroup>
-			<col width="7%" />
-			<col width="10%" />
-			<col width="17%" />
-			<col width="4%" />
-			<col width="4%" />
-			<col width="8%" />
-			<col width="49%" />
-			</colgroup>
-			<thead>
-			<tr class="header">
-			<th>編號</th>
-			<th>名稱</th>
-			<th>圖片</th>
-			<th>實戰？</th>
-			<th>球迷？</th>
-			<th>系列</th>
-			<th>備註</th>
-			</tr>
-			</thead>
-		</table>
-		
-		<h3>To be continued....</h3>
+	</head>
+	
+	<body>
+		<div class="container">
+			<h1>Lamigo 歷年球衣總整理<small>（至 2018/05/13 為止）</small></h1>
+
+			<div class="row">
+				<div class="col-xs-6">
+					<table id="statTable" width="400px" class="table">
+						<colgroup>
+							<col width="10%">
+							<col width="30%">
+							<col width="30%">
+							<col width="30%">
+						</colgroup>
+						<thead>
+						<tr class="header">
+							<th></th>
+							<th>實戰數量</th>
+							<th>球迷版</th>
+							<th>總計</th>
+						</tr>
+						</thead>
+					</table>		
+				</div>
+				<div class="col-xs-1">
+					&nbsp;
+				</div>
+				<div class="col-xs-5">
+					<table class="table">
+						<tr><th colspan="2">條件篩選</th></tr>
+						<tr>
+							<th>年份</th>
+							<td><form id=filter_year></form></td>
+						</tr>
+						<tr>
+							<th>系列</th>
+							<td><form id=filter_series></form></td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<form id=go>
+									<input type="button" value="套用" onclick="apply_filter();" />
+								</form>
+							</td>
+						</tr>
+					</table>			
+				</div>
+			</div>
+
+			<table id="mainTable" class="table-bordered">
+				<colgroup>
+				<col width="7%" />
+				<col width="10%" />
+				<col width="17%" />
+				<col width="4%" />
+				<col width="4%" />
+				<col width="8%" />
+				<col width="49%" />
+				</colgroup>
+				<thead>
+				<tr class="header">
+				<th>編號</th>
+				<th>名稱</th>
+				<th>圖片</th>
+				<th>實戰？</th>
+				<th>球迷？</th>
+				<th>系列</th>
+				<th>備註</th>
+				</tr>
+				</thead>
+			</table>
+			<h3>To be continued....</h3>
+		</div>
         
         <script>
             var apply_filter = function() {
@@ -874,25 +880,41 @@
 			composeRow(['總計', in_game_total, for_fan_total, all_total]);
 
             var filter_year = document.getElementById('filter_year');
+			var i = 0;
             for (var year in in_game_count) {
+				var label = document.createElement("LABEL");
+				label.className = "checkbox-inline";
                 var checkbox = document.createElement("INPUT");
                 checkbox.setAttribute("type", "checkbox");
                 checkbox.id = year.toString();
                 checkbox.checked = true;
-                filter_year.appendChild(checkbox);
-                filter_year.appendChild(document.createTextNode(year.toString()));
-                filter_year.appendChild(document.createElement('br'));
+				label.appendChild(checkbox);
+                label.appendChild(document.createTextNode(year.toString()));
+				filter_year.appendChild(label);
+				if (i == 5) {
+                	//filter_year.appendChild(document.createElement('br'));
+				}
+				i = (i + 1) % 6;
             }
 
+			console.log(series_items);
             var filter_series = document.getElementById('filter_series');
+			i = 0;
             for (var series in series_items) {
+				if (series === "") continue;
+				var label = document.createElement('LABEL');
+				label.className = "checkbox-inline";
                 var checkbox = document.createElement("INPUT");
                 checkbox.setAttribute('type', 'checkbox');
                 checkbox.id = series;
                 checkbox.checked = true;
-                filter_series.appendChild(checkbox);
-                filter_series.appendChild(document.createTextNode(series));
-                filter_series.appendChild(document.createElement('br'));
+                label.appendChild(checkbox);
+                label.appendChild(document.createTextNode(series));
+				filter_series.appendChild(label);
+				if (i == 3) {
+					//filter_series.appendChild(document.createElement('br'));
+				}
+				i = (i + 1) % 4;
             }
 		</script>
 	</body>
