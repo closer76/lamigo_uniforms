@@ -745,7 +745,7 @@
 						<tr>
 							<td colspan="2">
 								<form id=go>
-									<input type="button" value="套用" onclick="apply_filter();" />
+									<input type="button" value="套用" id='btn_apply_filter' />
 								</form>
 							</td>
 						</tr>
@@ -777,29 +777,6 @@
 			</table>
 			<h3>To be continued....</h3>
 		</div>
-        
-        <script>
-            var apply_filter = function() {
-                var tbl = document.getElementById('mainTable');
-                // 避開 <th>，從 1 開始。
-                for (var i = 1; i < tbl.rows.length; i++) {
-                    var year = tbl.rows[i].cells[0].innerText.substr(0,4);
-                    var series = tbl.rows[i].cells[5].innerText;
-                    if (series === '') {
-                        series = '其他';
-                    }
-
-                    var check_year = document.getElementById(year);
-                    var check_series = document.getElementById(series);
-
-                    if (check_year.checked && check_series.checked) {
-                        tbl.rows[i].style.display = '';
-                    } else {
-                        tbl.rows[i].style.display = 'none';
-                    }
-                }
-            };
-        </script>
         
         <script>
 			var tbl = document.getElementById('mainTable');
@@ -850,6 +827,9 @@
 				cell4.className =
 				cell5.className =
 				cell6.className = 'centerText';
+
+				cell1.className += ' year';
+				cell6.className += ' series';
 			}
 
             series_items['其他'] = 0;
@@ -879,43 +859,58 @@
 			}
 			composeRow(['總計', in_game_total, for_fan_total, all_total]);
 
-            var filter_year = document.getElementById('filter_year');
-			var i = 0;
-            for (var year in in_game_count) {
-				var label = document.createElement("LABEL");
-				label.className = "checkbox-inline";
-                var checkbox = document.createElement("INPUT");
-                checkbox.setAttribute("type", "checkbox");
-                checkbox.id = year.toString();
-                checkbox.checked = true;
-				label.appendChild(checkbox);
-                label.appendChild(document.createTextNode(year.toString()));
-				filter_year.appendChild(label);
-				if (i == 5) {
-                	//filter_year.appendChild(document.createElement('br'));
-				}
-				i = (i + 1) % 6;
-            }
+			for (var year in in_game_count) {
+				$('#filter_year')
+					.append($('<label></label>')
+						.addClass('checkbox-inline')
+						.append($('<input></input>')
+							.attr('type', 'checkbox')
+							.attr('checked', true)
+							.addClass('cb_year'))
+						.append(year.toString()));
+			}
 
-			console.log(series_items);
-            var filter_series = document.getElementById('filter_series');
-			i = 0;
-            for (var series in series_items) {
-				if (series === "") continue;
-				var label = document.createElement('LABEL');
-				label.className = "checkbox-inline";
-                var checkbox = document.createElement("INPUT");
-                checkbox.setAttribute('type', 'checkbox');
-                checkbox.id = series;
-                checkbox.checked = true;
-                label.appendChild(checkbox);
-                label.appendChild(document.createTextNode(series));
-				filter_series.appendChild(label);
-				if (i == 3) {
-					//filter_series.appendChild(document.createElement('br'));
-				}
-				i = (i + 1) % 4;
-            }
+			for (var series in series_items) {
+				if (series === '') continue;
+				$('#filter_series')
+					.append($('<label></label>')
+						.addClass('checkbox-inline')
+						.append($('<input></input>')
+							.attr('type', 'checkbox')
+							.attr('checked', true)
+							.addClass('cb_series'))
+						.append(series));
+			}
+		</script>
+
+		<script>
+			$(document).ready(function() {
+
+				// Event handler of "Filter Apply".
+				$('#btn_apply_filter').click(function() {
+					var get_checked = function(selector) {
+						var result = [];
+						$(selector + ':checked').parent().each(function() {
+							result.push($(this).text());
+						});
+						return result;
+					};
+					var checked_year = get_checked('input.cb_year');
+					var checked_series = get_checked('input.cb_series');
+
+					$('#mainTable tr:not(.header)').each(function() {
+						var strYear = $(this).find('td.year').text().substr(0,4);
+						var strSeries = $(this).find('td.series').text() || '其他';
+						if ($.inArray(strYear, checked_year) >= 0 &&
+						    $.inArray(strSeries, checked_series) >= 0)
+						{
+							$(this).show();
+						} else {
+							$(this).hide();
+						}
+					});
+				});
+			});
 		</script>
 	</body>
 </html>
