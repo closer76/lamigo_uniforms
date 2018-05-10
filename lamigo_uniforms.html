@@ -736,16 +736,38 @@
 						<tr><th colspan="2">條件篩選</th></tr>
 						<tr>
 							<th>年份</th>
-							<td><form id=filter_year></form></td>
+							<td>
+								<div><form id=filter_year></form></div>
+								<div style="text-align: center;">
+										<button type="button"
+										class="btn btn-default btn-xs"
+										id="btn_year_selectall">全選</button>
+									<button type="button"
+										class="btn btn-default btn-xs"
+										id="btn_year_selectnone">全不選</button>										
+								</div>
+							</td>
 						</tr>
 						<tr>
 							<th>系列</th>
-							<td><form id=filter_series></form></td>
+							<td>
+								<div><form id=filter_series></form></div>
+								<div style="text-align: center;">
+									<button type="button"
+											class="btn btn-default btn-xs"
+											id="btn_series_selectall">全選</button>
+									<button type="button"
+											class="btn btn-default btn-xs"
+											id="btn_series_selectnone">全不選</button>
+								</div>
+							</td>
 						</tr>
 						<tr>
-							<td colspan="2">
+							<td colspan="2" style="text-align: center;">
 								<form id=go>
-									<input type="button" value="套用" id='btn_apply_filter' />
+									<button type="button"
+											class="btn btn-default"
+											id="btn_apply_filter">套用</button>
 								</form>
 							</td>
 						</tr>
@@ -865,7 +887,7 @@
 						.addClass('checkbox-inline')
 						.append($('<input></input>')
 							.attr('type', 'checkbox')
-							.attr('checked', true)
+							.prop('checked', true)
 							.addClass('cb_year'))
 						.append(year.toString()));
 			}
@@ -877,7 +899,7 @@
 						.addClass('checkbox-inline')
 						.append($('<input></input>')
 							.attr('type', 'checkbox')
-							.attr('checked', true)
+							.prop('checked', true)
 							.addClass('cb_series'))
 						.append(series));
 			}
@@ -909,6 +931,26 @@
 							$(this).hide();
 						}
 					});
+				});
+
+				// Event handler for 'Select All' in year filter
+				$('#btn_year_selectall').click(function() {
+					$('.cb_year').prop('checked', true);
+				});
+
+				// Event handler for 'Select None' in year filter
+				$('#btn_year_selectnone').click(function() {
+					$('.cb_year').prop('checked', false);
+				});
+
+				// Event handler for 'Select All' in series filter
+				$('#btn_series_selectall').click(function() {
+					$('.cb_series').prop('checked', true);
+				});
+
+				// Event handler for 'Select None' in series filter
+				$('#btn_series_selectnone').click(function() {
+					$('.cb_series').prop('checked', false);
 				});
 			});
 		</script>
