@@ -726,6 +726,8 @@
 							<th>總計</th>
 						</tr>
 						</thead>
+						<tbody></tbody>
+						<tfoot></tfoot>
 					</table>		
 				</div>
 				<div class="col-xs-1">
@@ -733,44 +735,50 @@
 				</div>
 				<div class="col-xs-5">
 					<table class="table">
-						<tr><th colspan="2">條件篩選</th></tr>
-						<tr>
-							<th>年份</th>
-							<td>
-								<div><form id=filter_year></form></div>
-								<div style="text-align: center;">
+						<thead>
+							<tr>
+								<th colspan="2">條件篩選</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th>年份</th>
+								<td>
+									<div><form id=filter_year></form></div>
+									<div style="text-align: center;">
+											<button type="button"
+											class="btn btn-default btn-xs"
+											id="btn_year_selectall">全選</button>
 										<button type="button"
-										class="btn btn-default btn-xs"
-										id="btn_year_selectall">全選</button>
-									<button type="button"
-										class="btn btn-default btn-xs"
-										id="btn_year_selectnone">全不選</button>										
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<th>系列</th>
-							<td>
-								<div><form id=filter_series></form></div>
-								<div style="text-align: center;">
-									<button type="button"
 											class="btn btn-default btn-xs"
-											id="btn_series_selectall">全選</button>
-									<button type="button"
-											class="btn btn-default btn-xs"
-											id="btn_series_selectnone">全不選</button>
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<td colspan="2" style="text-align: center;">
-								<form id=go>
-									<button type="button"
-											class="btn btn-default"
-											id="btn_apply_filter">套用</button>
-								</form>
-							</td>
-						</tr>
+											id="btn_year_selectnone">全不選</button>										
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>系列</th>
+								<td>
+									<div><form id=filter_series></form></div>
+									<div style="text-align: center;">
+										<button type="button"
+												class="btn btn-default btn-xs"
+												id="btn_series_selectall">全選</button>
+										<button type="button"
+												class="btn btn-default btn-xs"
+												id="btn_series_selectnone">全不選</button>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2" style="text-align: center;">
+									<form id=go>
+										<button type="button"
+												class="btn btn-default"
+												id="btn_apply_filter">套用</button>
+									</form>
+								</td>
+							</tr>
+						</tbody>
 					</table>			
 				</div>
 			</div>
@@ -796,117 +804,132 @@
 				<th>備註</th>
 				</tr>
 				</thead>
+				<tbody></tbody>
 			</table>
 			<h3>To be continued....</h3>
 		</div>
         
         <script>
-			var tbl = document.getElementById('mainTable');
 			var last_year = 0;
-			var year_serial = 1;
+			var year_serial = [];
 			var in_game_count = [];
 			var for_fan_count = [];
 			var all_count = [];
             var series_items = [];
-			for (var i = 0; i < db.length; i++) {
-				var row = tbl.insertRow(-1);
-				var cell1 = row.insertCell(0);
-				var cell2 = row.insertCell(1);
-				var cell3 = row.insertCell(2);
-				var cell4 = row.insertCell(3);
-				var cell5 = row.insertCell(4);
-				var cell6 = row.insertCell(5);
-				var cell7 = row.insertCell(6);
-				
-                if (db[i].hasOwnProperty('series')) {
-                    series_items[db[i].series] = 0;
-                }
+			var series_count = [];
+			for (var i = 0; i < db.length; i++) {				
+				var s = ('series' in db[i] && db[i].series) || '其他';
+				if (s in series_count) {
+					series_count[s]++;
+				} else {
+					series_items.push(s);
+					series_count[s] = 0;
+				}
 
 				if (db[i].year != last_year) {
 					last_year = db[i].year;
-					year_serial = 1;
+					db[i].year_serial = 1;
 					in_game_count[db[i].year] = 0;
 					for_fan_count[db[i].year] = 0;
 					all_count[db[i].year] = 1;
 				} else {
-					++year_serial;
+					db[i].year_serial = db[i-1].year_serial + 1;
 					++all_count[db[i].year];
 				}
-				cell1.innerHTML = db[i].year + '-' + year_serial;
-				cell2.innerHTML = db[i].name;
-				cell3.innerHTML = (db[i].img === 'none') ?
-					'(n/a)' :
-					'<a href="' + db[i].img + '"><img src="' + db[i].img + '" alt="image"></a>';
-				cell4.innerHTML = db[i].ingame ? 'Yes' : 'No';
-				in_game_count[db[i].year] += db[i].ingame ? 1 : 0;
-				cell5.innerHTML = db[i].forfan ? 'Yes' : 'No';
-				for_fan_count[db[i].year] += db[i].forfan ? 1 : 0;
-				cell6.innerHTML = (db[i].hasOwnProperty('series')) ? db[i].series : "";
-				cell7.innerHTML = db[i].desc +
-					(db[i].src === 'none' ? "" : '（<a href="' + db[i].src + '">圖片來源</a>）');
-				
-				cell1.className =
-				cell4.className =
-				cell5.className =
-				cell6.className = 'centerText';
 
-				cell1.className += ' year';
-				cell6.className += ' series';
+				in_game_count[db[i].year] += db[i].ingame ? 1 : 0;
+				for_fan_count[db[i].year] += db[i].forfan ? 1 : 0;
 			}
 
-            series_items['其他'] = 0;
+            // move '其他' to tail of series_items
+			var tmp = series_items.splice(series_items.indexOf('其他'), 1);
+			series_items = series_items.concat(tmp);
 		</script>
 
 		<p>&nbsp;</p>
-		
-		<script>
-			tbl = document.getElementById('statTable');
-			var in_game_total = 0;
-			var for_fan_total = 0;
-			var all_total = 0;
-			var composeRow = function (items) {
-				var row = tbl.insertRow(-1);
-				for (var i in items) {
-					var cell = row.insertCell(-1);
-					cell.innerHTML = items[i];
-					cell.className = 'centerText';
-				}
-			};
-			
-			for (var i in in_game_count) {
-				composeRow( [i, in_game_count[i], for_fan_count[i], all_count[i]]);
-				in_game_total += in_game_count[i];
-				for_fan_total += for_fan_count[i];
-				all_total += all_count[i];				
-			}
-			composeRow(['總計', in_game_total, for_fan_total, all_total]);
 
-			for (var year in in_game_count) {
+		<script>
+			$(document).ready(function() {
+				// Construct main table
+				for (var i = 0; i < db.length; i++) {				
+					$('#mainTable').find('tbody')
+						.append($('<tr>')
+							.append($('<td>')
+								.addClass('year')
+								.html(db[i].year + '-' + db[i].year_serial)
+							)
+							.append($('<td>')
+								.html(db[i].name)
+							)
+							.append((db[i].img === 'none') ?
+								$('<td>').html('(n/a)') :
+								$('<td>')
+									.append($('<img>')
+										.attr('src', db[i].img)
+										.attr('alt', 'image')
+										.wrap('<a href="' + db[i].img + '"></a>')
+									)
+							)
+							.append($('<td>')
+								.addClass('centerText')
+								.html(db[i].ingame ? 'Yes' : 'No')
+							)
+							.append($('<td>')
+								.addClass('centerText')
+								.html(db[i].forfan ? 'Yes' : 'No')
+							)
+							.append($('<td>')
+								.addClass('centerText')
+								.addClass('series')
+								.html(('series' in db[i]) ? db[i].series : '')
+							)
+							.append($('<td>')
+								.html(db[i].desc + (db[i].src === 'none' ? "" : '（<a href="' + db[i].src + '">圖片來源</a>）'))
+							)
+						);
+				}
+
+				// Construct stat table
+				for (var i in in_game_count) {
+					$('#statTable').find('tbody')
+						.append($('<tr>')
+							.append($('<td>').addClass('centerText').html(i))
+							.append($('<td>').addClass('centerText').html(in_game_count[i]))
+							.append($('<td>').addClass('centerText').html(for_fan_count[i]))
+							.append($('<td>').addClass('centerText').html(all_count[i]))
+						);
+				}
+				var sum = function(total, num) { return total + num;};
+				$('#statTable').find('tfoot')
+					.append($('<tr>')
+						.append($('<td>').addClass('centerText').html('總計'))
+						.append($('<td>').addClass('centerText').html(in_game_count.reduce(sum, 0)))
+						.append($('<td>').addClass('centerText').html(for_fan_count.reduce(sum, 0)))
+						.append($('<td>').addClass('centerText').html(all_count.reduce(sum, 0)))
+					);
+
+				// Construct filter table
+				for (var year in in_game_count) {
 				$('#filter_year')
-					.append($('<label></label>')
+					.append($('<label>')
 						.addClass('checkbox-inline')
-						.append($('<input></input>')
+						.append($('<input>')
 							.attr('type', 'checkbox')
 							.prop('checked', true)
 							.addClass('cb_year'))
 						.append(year.toString()));
-			}
+				}
 
-			for (var series in series_items) {
-				if (series === '') continue;
-				$('#filter_series')
-					.append($('<label></label>')
-						.addClass('checkbox-inline')
-						.append($('<input></input>')
-							.attr('type', 'checkbox')
-							.prop('checked', true)
-							.addClass('cb_series'))
-						.append(series));
-			}
-		</script>
-
-		<script>
-			$(document).ready(function() {
+				for (var index in series_items) {
+					$('#filter_series')
+						.append($('<label>')
+							.addClass('checkbox-inline')
+							.append($('<input>')
+								.attr('type', 'checkbox')
+								.prop('checked', true)
+								.addClass('cb_series'))
+							.append(series_items[index]));
+				}
 
 				// Event handler of "Filter Apply".
 				$('#btn_apply_filter').click(function() {
